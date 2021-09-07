@@ -1,0 +1,90 @@
+﻿@page "/"
+@inject IJSRuntime js
+@inject HttpClient Http
+@using WeatherApplication.Shared
+
+<hr />
+
+<div class="container">
+    <form @onsubmit="sendForm" class="row g-3 mb-3">
+        <div class="col-4">
+            <label for="date1" class="visually-hidden">Start date</label>
+            <input @bind="date1" class="form-control" type="date" name="date1" id="date1" />
+        </div>
+        <div class="col-4">
+            <label for="date2" class="visually-hidden">End date</label>
+            <input @bind="date2" class="form-control" type="date" name="date2" id="date2" />
+        </div>
+        <div class="col-4">
+            <button type="submit" id="btn" class="btn btn-primary">Reload data</button>
+        </div>
+    </form>
+</div>
+
+@if (weathers == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <LastWeather data="last"></LastWeather>
+
+
+    <p><b>Count Data: </b> </p>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>State</th>
+                <th>City</th>
+                <th>Date</th>
+                <th>Temp °С</th>
+                <th>Pressure (mm. ps.)</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var info in weathers)
+            {
+                <tr>
+                    <td>@info.id</td>
+                    <td>@info.state</td>
+                    <td>@info.city</td>
+                    <td>@info.timestamp</td>
+                    <td>@info.tp</td>
+                    <td>@info.pr</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <div class="container-fluid">
+        <canvas id="myChart" width="300" height="100"></canvas>
+    </div>
+}
+
+@code {
+    private Weather[] weathers;
+    private Weather last;
+
+    private DateTime date1 = DateTime.Now;
+    private DateTime date2 = DateTime.Now;
+
+    protected override async Task OnInitializedAsync()
+    {
+        weathers = await Http.GetFromJsonAsync<Weather[]>("weather");
+        last = await Http.GetFromJsonAsync<Weather>("weather/last");
+    }
+
+    private async Task sendForm()
+    {
+        string url = string.Format("weather/date/{0}/{1}", date1, date2);
+        weathers = await Http.GetFromJsonAsync<Weather[]>(url);
+
+        int[] data = weathers.Select(x => x.tp).ToArray();
+        string[] label = weathers.Select(x => x.timestamp.Value.ToShortDateString()).ToArray();
+
+        js.InvokeVoidAsync("renderChart", data, label);
+    }
+}

@@ -1,0 +1,21 @@
+﻿@using WeatherApplication.Shared 
+
+<h3>Last Weather</h3>
+<div class="container">
+    <div class="last-weather">
+        <div class="align-items-center">
+            <h1>@data.tp °С</h1>
+        </div>
+        <div>
+            <h3> Город: @data.state </h3>
+            <h3> Давление: @data.pr мм рт. ст</h3>
+            <h3> Влажность: @data.hu %</h3>
+            <h3> Ветер: @data.wd м/с</h3>
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public Weather data { get; set; }
+}

@@ -1,0 +1,9 @@
+C:\Users\habibullinDD\Desktop\Task\Weather\WeatherApplication\Shared\bin\Debug\netstandard2.1\WeatherApplication.Shared.deps.json
+C:\Users\habibullinDD\Desktop\Task\Weather\WeatherApplication\Shared\bin\Debug\netstandard2.1\WeatherApplication.Shared.dll
+C:\Users\habibullinDD\Desktop\Task\Weather\WeatherApplication\Shared\bin\Debug\netstandard2.1\WeatherApplication.Shared.pdb
+C:\Users\habibullinDD\Desktop\Task\Weather\WeatherApplication\Shared\obj\Debug\netstandard2.1\WeatherApplication.Shared.csproj.AssemblyReference.cache
+C:\Users\habibullinDD\Desktop\Task\Weather\WeatherApplication\Shared\obj\Debug\netstandard2.1\WeatherApplication.Shared.AssemblyInfoInputs.cache
+C:\Users\habibullinDD\Desktop\Task\Weather\WeatherApplication\Shared\obj\Debug\netstandard2.1\WeatherApplication.Shared.AssemblyInfo.cs
+C:\Users\habibullinDD\Desktop\Task\Weather\WeatherApplication\Shared\obj\Debug\netstandard2.1\WeatherApplication.Shared.csproj.CoreCompileInputs.cache
+C:\Users\habibullinDD\Desktop\Task\Weather\WeatherApplication\Shared\obj\Debug\netstandard2.1\WeatherApplication.Shared.dll
+C:\Users\habibullinDD\Desktop\Task\Weather\WeatherApplication\Shared\obj\Debug\netstandard2.1\WeatherApplication.Shared.pdb
